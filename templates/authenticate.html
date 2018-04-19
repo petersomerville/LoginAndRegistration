@@ -1,0 +1,47 @@
+{% extends 'base.html' %} {% block body %}
+
+<div class="row my-5">
+    <div class="col-6 offset-3">
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link active" id="login-tab" data-toggle="tab" href="#login" role="tab" aria-controls="login" aria-selected="true">Login</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="register-tab" data-toggle="tab" href="#register" role="tab" aria-controls="register" aria-selected="false">Register</a>
+            </li>
+        </ul>
+        <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade show active" id="login" role="tabpanel" aria-labelledby="login-tab">
+                <form action="">
+                    <div class="form-group">
+                        <input type="email" placeholder="Email" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <input type="password" placeholder="Password" class="form-control">
+                    </div>     
+                    <button type="submit" class="btn btn-primary" >Login</button>               
+                </form>
+            </div>
+            <div class="tab-pane fade" id="register" role="tabpanel" aria-labelledby="register-tab">
+                <form action="{{url_for('register')}}" method="POST">
+                    <div class="form-group">
+                        <input type="email" name="html_email" placeholder="Email" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="html_username" placeholder="Full Name" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <input type="password" name="html_password" placeholder="Password" class="form-control">
+                    </div>     
+                    <div class="form-group">
+                        <input type="password" name="html_confirm" placeholder="Confirm Password" class="form-control">
+                    </div>     
+                    <button type="submit" class="btn btn-primary" >Register</button>               
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% include 'errors.html' %}
+
+{% endblock %}
