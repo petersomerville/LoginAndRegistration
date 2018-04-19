@@ -51,6 +51,22 @@ def logout():
     session.clear()
     return redirect(url_for('index'))
 
+@app.route('/login', methods = ['POST'])
+def login():
+    
+    try:
+        user = get_user_by_email(request.form['html_email'])    
+        if user.password == request.form['html_password']:
+            session['user_id'] = user.id
+            session['username'] = user.name
+            return redirect(url_for('index'))
+    except:
+        pass    
+
+    flash('Invalid login')
+    return redirect(url_for('authenticate'))
+
+
 def is_empty(field, form):
     key = 'html_{}'.format(field)
     value = form[key]
